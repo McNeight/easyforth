@@ -94,7 +94,7 @@ The stack should now look like this:
 {% include stack.html stack="579" %}
 
 This style, where the operator appears after the operands, is known as
-[Reverse-Polish
+[Reverse Polish
 notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation). Let's try
 something a bit more complicated, and calculate `10 * (5 + 2)`. Type the
 following into the interpreter:
@@ -148,9 +148,11 @@ rest of the words (until the `;`) make up the body of the definition. It's
 conventional to include two spaces between the name and the body of the
 definition. Try entering the following:
 
-    : foo  100 + ;
-    1000 foo
-    foo foo foo
+```forth
+: foo  100 + ;
+1000 foo
+foo foo foo
+```
 
 **Warning:** A common mistake is to miss out the space before the `;` word. Because Forth
 words are space delimited and can contain most characters, `+;` is a perfectly
@@ -444,20 +446,24 @@ This should output:
 
 The expression `10 0 do i . loop` is roughly equivalent to:
 
-    for (int i = 0; i < 10; i++) {
-      print(i);
-    }
+```c
+for (int i = 0; i < 10; i++) {
+  print(i);
+}
+```
 
 ### Fizz Buzz
 
 We can write the classic [Fizz Buzz](https://en.wikipedia.org/wiki/Fizz_buzz)
 program easily using a `do loop`:
 
-    : fizz?  3 mod 0 = dup if ." Fizz" then ;
-    : buzz?  5 mod 0 = dup if ." Buzz" then ;
-    : fizz-buzz?  dup fizz? swap buzz? or invert ;
-    : do-fizz-buzz  25 1 do cr i fizz-buzz? if i . then loop ;
-    do-fizz-buzz
+```forth
+: fizz?  3 mod 0 = dup if ." Fizz" then ;
+: buzz?  5 mod 0 = dup if ." Buzz" then ;
+: fizz-buzz?  dup fizz? swap buzz? or invert ;
+: do-fizz-buzz  25 1 do cr i fizz-buzz? if i . then loop ;
+do-fizz-buzz
+```
 
 {% include editor.html %}
 
